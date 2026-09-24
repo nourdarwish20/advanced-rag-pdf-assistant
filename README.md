@@ -2,7 +2,11 @@
 
 Ask questions about your own PDF documents and get answers grounded in their content, with citations.
 
-The app improves on basic Retrieval-Augmented Generation (RAG) in two ways. It expands each question into several search queries so it finds more relevant passages. It then reranks those passages with Cohere, so only the best ones reach the LLM. The model is instructed to answer only from your documents and to say so when the answer isn't there.
+The app improves on basic Retrieval-Augmented Generation (RAG) by expanding each question and reranking retrieved passages so only the most relevant context reaches the LLM.
+
+## Live Demo
+
+[Open the Advanced RAG PDF Assistant](https://advanced-rag-pdf-assistant-lz27ov26duz7bhyr2xby7y.streamlit.app/)
 
 ## Features
 
@@ -60,15 +64,15 @@ The app improves on basic Retrieval-Augmented Generation (RAG) in two ways. It e
 
 ## Technologies Used
 
-| Purpose | Technology |
-|---|---|
-| User interface | [Streamlit](https://streamlit.io/) |
-| LLM (query expansion and answers) | [Groq](https://groq.com/), `openai/gpt-oss-120b` by default (configurable via `GROQ_MODEL`) |
-| Embeddings | [Cohere](https://cohere.com/), `embed-english-v3.0` |
-| Reranking | Cohere, `rerank-v3.5` |
-| Vector database | [ChromaDB](https://www.trychroma.com/) |
-| Orchestration | [LangChain](https://www.langchain.com/) (`langchain-core`, `langchain-chroma`, `langchain-cohere`, `langchain-groq`) |
-| PDF parsing | `pypdf` via LangChain's `PyPDFLoader` |
+| Purpose                           | Technology                                                                                                           |
+| --------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| User interface                    | [Streamlit](https://streamlit.io/)                                                                                   |
+| LLM (query expansion and answers) | [Groq](https://groq.com/), `openai/gpt-oss-120b` by default (configurable via `GROQ_MODEL`)                          |
+| Embeddings                        | [Cohere](https://cohere.com/), `embed-english-v3.0`                                                                  |
+| Reranking                         | Cohere, `rerank-v3.5`                                                                                                |
+| Vector database                   | [ChromaDB](https://www.trychroma.com/)                                                                               |
+| Orchestration                     | [LangChain](https://www.langchain.com/) (`langchain-core`, `langchain-chroma`, `langchain-cohere`, `langchain-groq`) |
+| PDF parsing                       | `pypdf` via LangChain's `PyPDFLoader`                                                                                |
 
 ## Project Structure
 
@@ -115,11 +119,11 @@ copy .env.example .env
 cp .env.example .env
 ```
 
-| Variable | Description |
-|---|---|
-| `GROQ_API_KEY` | Required. Get one at https://console.groq.com/keys |
-| `COHERE_API_KEY` | Required. Get one at https://dashboard.cohere.com/api-keys |
-| `GROQ_MODEL` | *Optional.* The Groq model used for query expansion and answers. Defaults to `openai/gpt-oss-120b`. Use any chat model listed at https://console.groq.com/docs/models |
+| Variable         | Description                                                                                                                                                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GROQ_API_KEY`   | Required. Get one at https://console.groq.com/keys                                                                                                                    |
+| `COHERE_API_KEY` | Required. Get one at https://dashboard.cohere.com/api-keys                                                                                                            |
+| `GROQ_MODEL`     | _Optional._ The Groq model used for query expansion and answers. Defaults to `openai/gpt-oss-120b`. Use any chat model listed at https://console.groq.com/docs/models |
 
 Both services offer free tiers. `.env` is git-ignored, so your keys are never committed. If a key is missing, the app shows a clear message instead of crashing.
 
@@ -135,7 +139,7 @@ The app opens at http://localhost:8501.
 
 1. In the sidebar, upload one or more PDFs (for example, a research paper and a company report).
 2. Click **Process Documents**. The "Indexed chunks" counter goes up.
-3. Type a question such as *"What methodology did the authors use?"* and click **Ask**.
+3. Type a question such as _"What methodology did the authors use?"_ and click **Ask**.
 4. Read the answer. Citations like **[1]** point to the numbered sources.
 5. Open **Expanded Queries** to see the alternative searches the app ran.
 6. Open **Sources** to see the filename, page number, rerank score and text of each chunk.
@@ -147,6 +151,6 @@ Use the **top-k** slider to control how many reranked chunks are sent to the LLM
 
 > Add your screenshots to the `screenshots/` folder and they will appear here.
 
-| Main interface | Answer with sources |
-|---|---|
+| Main interface                          | Answer with sources                            |
+| --------------------------------------- | ---------------------------------------------- |
 | ![Main interface](screenshots/main.png) | ![Answer with sources](screenshots/answer.png) |
