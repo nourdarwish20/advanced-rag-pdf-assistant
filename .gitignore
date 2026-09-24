@@ -1,0 +1,35 @@
+# Secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Vector database
+chroma_db/
+chromadb/
+*.sqlite
+*.sqlite3
+*.db
+
+# Uploaded / local PDFs
+data/
+uploads/
+*.pdf
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Temporary and editor files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
