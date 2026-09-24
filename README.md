@@ -96,7 +96,7 @@ advanced-rag-pdf-assistant/
 Requires **Python 3.10+**.
 
 ```bash
-git clone https://github.com/<your-username>/advanced-rag-pdf-assistant.git
+git clone https://github.com/nourdarwish20/advanced-rag-pdf-assistant.git
 cd advanced-rag-pdf-assistant
 
 python -m venv .venv
@@ -135,6 +135,15 @@ streamlit run app.py
 
 The app opens at http://localhost:8501.
 
+## Deployment
+
+The app is deployed on Streamlit Community Cloud.
+
+API keys are stored securely in Streamlit Cloud Secrets and are not included in the GitHub repository.
+
+[Open the Live Demo](https://advanced-rag-pdf-assistant-lz27ov26duz7bhyr2xby7y.streamlit.app/)
+
+
 ## Example Usage
 
 1. In the sidebar, upload one or more PDFs (for example, a research paper and a company report).
@@ -147,9 +156,15 @@ The app opens at http://localhost:8501.
 
 Use the **top-k** slider to control how many reranked chunks are sent to the LLM. Use **Reset Database** to clear all indexed documents.
 
-## Screenshots
+## Current Limitations
 
-> Add your screenshots to the `screenshots/` folder and they will appear here.
+- Scanned or image-only PDFs are not supported because the project does not currently use OCR.
+- The deployed demo uses a shared ChromaDB collection, so it is intended as a portfolio/demo application rather than a production multi-user system.
+- The vector database on Streamlit Cloud is not intended as permanent document storage.
+- The current embedding model is optimized primarily for English documents.
+- The app does not currently maintain conversation history between questions.
+
+## Screenshots
 
 | Main interface                          | Answer with sources                            |
 | --------------------------------------- | ---------------------------------------------- |
